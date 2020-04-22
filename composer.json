@@ -1,0 +1,15 @@
+{
+    "name": "Form Mail",
+    "description": "Form Mail",
+    "type": "project",
+    "license": "AGPL",
+    "authors": [
+        {
+            "name": "Vitor Mattos"
+        }
+    ],
+    "require": {},
+    "require-dev": {
+        "phpunit/phpunit": "^9.1"
+    }
+}

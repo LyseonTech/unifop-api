@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<info xmlns:xsi= "http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="https://apps.nextcloud.com/schema/apps/info.xsd">
+    <id>formmail</id>
+    <name>Form Mail</name>
+    <summary>Form Mail</summary>
+    <description><![CDATA[Form Mail]]></description>
+    <version>0.0.1</version>
+    <licence>agpl</licence>
+    <author mail="contato@lt.coop.br" homepage="https://github.com/lyseontech/FormMail">Lyseon Tech</author>
+    <namespace>FormMail</namespace>
+    <category>office</category>
+    <bugs>https://github.com/lyseontech/FormMail/issues</bugs>
+    <dependencies>
+        <nextcloud min-version="15" max-version="15"/>
+    </dependencies>
+    <navigations>
+        <navigation>
+            <name>Form Mail</name>
+            <route>formmail.page.index</route>
+        </navigation>
+    </navigations>
+</info>
