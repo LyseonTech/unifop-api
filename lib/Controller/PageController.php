@@ -53,9 +53,9 @@ class PageController extends Controller {
 	/**
 	 * Save data
 	 *
-     * @NoAdminRequired
-     * @NoCSRFRequired
-     * @PublicPage
+	 * @NoAdminRequired
+	 * @NoCSRFRequired
+	 * @PublicPage
 	 * @AnonRateThrottle(limit=10, period=100)
 	 */
 	public function save() {
@@ -92,7 +92,7 @@ class PageController extends Controller {
 		$formResponse->setPhone($post['phone']);
 		$this->mapper->insert($formResponse);
 		$response->setData(['success' => ['success' => 'Success']]);
-		$response->addHeader('Access-Control-Allow-Origin', 'http://lt.coop.br');
+		$response->addHeader('Access-Control-Allow-Origin', '*');
 		return $response;
 	}
 
