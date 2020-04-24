@@ -56,9 +56,10 @@ class PageController extends Controller {
      * @NoAdminRequired
      * @NoCSRFRequired
      * @PublicPage
-	 * @AnonRateThrottle(limit=1, period=100)
+	 * @AnonRateThrottle(limit=10, period=100)
 	 */
 	public function save() {
+		$response = new JSONResponse();
 		$post = $this->request->post;
 		$error = [];
 		if (!isset($post['email']) || !filter_var($post['email'], FILTER_VALIDATE_EMAIL)) {
@@ -79,7 +80,7 @@ class PageController extends Controller {
 			$error[] = 'Invalid phone';
 		}
 		if ($error) {
-			$response = new JSONResponse($error);
+			$response->setData($error);
 			$response->setStatus(400);
 			return $response;
 		}
@@ -90,7 +91,9 @@ class PageController extends Controller {
 		$formResponse->setMessage($post['message']);
 		$formResponse->setPhone($post['phone']);
 		$this->mapper->insert($formResponse);
-		return new JSONResponse(['Success']);
+		$response->setData(['success' => ['success' => 'Success']]);
+		$response->addHeader('Access-Control-Allow-Origin', 'http://lt.coop.br');
+		return $response;
 	}
 
 }
