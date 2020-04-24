@@ -60,6 +60,7 @@ class PageController extends Controller {
 	 */
 	public function save() {
 		$response = new JSONResponse();
+		$response->addHeader('Access-Control-Allow-Origin', 'https://lt.coop.br');
 		$post = $this->request->post;
 		$error = [];
 		if (!isset($post['email']) || !filter_var($post['email'], FILTER_VALIDATE_EMAIL)) {
@@ -92,7 +93,6 @@ class PageController extends Controller {
 		$formResponse->setPhone($post['phone']);
 		$this->mapper->insert($formResponse);
 		$response->setData(['success' => ['success' => 'Success']]);
-		$response->addHeader('Access-Control-Allow-Origin', '*');
 		return $response;
 	}
 
