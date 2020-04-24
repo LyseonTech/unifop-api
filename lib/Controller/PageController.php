@@ -90,7 +90,7 @@ class PageController extends Controller {
 		$formResponse->setMessage($post['message']);
 		$formResponse->setPhone($post['phone']);
 		$this->mapper->insert($formResponse);
-		return new JSONResponse(['Success']);
+		return new JSONResponse(['success' => ['success' => 'Success']]);
 	}
 
 }
