@@ -56,7 +56,7 @@ class PageController extends Controller {
      * @NoAdminRequired
      * @NoCSRFRequired
      * @PublicPage
-	 * @AnonRateThrottle(limit=1, period=100)
+	 * @AnonRateThrottle(limit=10, period=100)
 	 */
 	public function save() {
 		$post = $this->request->post;
