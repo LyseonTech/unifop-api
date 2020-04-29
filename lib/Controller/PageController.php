@@ -60,7 +60,7 @@ class PageController extends Controller {
 	 */
 	public function save() {
 		$response = new JSONResponse();
-		$response->addHeader('Access-Control-Allow-Origin', 'https://lt.coop.br');
+		$response->addHeader('Access-Control-Allow-Origin', '*');
 		$post = $this->request->post;
 		$error = [];
 		if (!isset($post['email']) || !filter_var($post['email'], FILTER_VALIDATE_EMAIL)) {

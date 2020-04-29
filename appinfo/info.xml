@@ -16,7 +16,7 @@
     </dependencies>
     <navigations>
         <navigation>
-            <name>Form Mail</name>
+            <name>Baixar</name>
             <route>formmail.page.index</route>
         </navigation>
     </navigations>
