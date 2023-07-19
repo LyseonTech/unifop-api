@@ -5,14 +5,14 @@
     <name>Form Mail</name>
     <summary>Form Mail</summary>
     <description><![CDATA[Form Mail]]></description>
-    <version>0.0.1</version>
+    <version>0.0.2</version>
     <licence>agpl</licence>
-    <author mail="contato@lt.coop.br" homepage="https://github.com/lyseontech/FormMail">Lyseon Tech</author>
+    <author mail="contato@librecode.coop" homepage="https://github.com/LibreCodecoop/FormMail">LibreCode coop</author>
     <namespace>FormMail</namespace>
     <category>office</category>
-    <bugs>https://github.com/lyseontech/FormMail/issues</bugs>
+    <bugs>https://github.com/LibreCodecoop/FormMail/issues</bugs>
     <dependencies>
-        <nextcloud min-version="15" max-version="15"/>
+        <nextcloud min-version="27" max-version="28"/>
     </dependencies>
     <navigations>
         <navigation>

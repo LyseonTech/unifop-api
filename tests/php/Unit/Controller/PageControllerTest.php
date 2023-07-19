@@ -2,11 +2,11 @@
 
 namespace OCA\FormMail\Tests\Unit\Controller;
 
-use OCP\AppFramework\Http\TemplateResponse;
-
 use OCA\FormMail\Controller\PageController;
+
 use OCA\FormMail\Db\FormResponseMapper;
 use OCP\AppFramework\Http\JSONResponse;
+use OCP\AppFramework\Http\TemplateResponse;
 use OCP\IRequest;
 use PHPUnit\Framework\TestCase;
 
