@@ -21,40 +21,40 @@ class Version000002Date20200421193343 extends SimpleMigrationStep {
 	 * @return null|ISchemaWrapper
 	 */
 	public function changeSchema(IOutput $output, Closure $schemaClosure, array $options) {
-        /** @var ISchemaWrapper $schema */
-        $schema = $schemaClosure();
+		/** @var ISchemaWrapper $schema */
+		$schema = $schemaClosure();
 
-        if (!$schema->hasTable('form_responses')) {
-            $table = $schema->createTable('form_responses');
-            $table->addColumn('id', 'integer', [
-                'autoincrement' => true,
-                'notnull' => true,
-            ]);
-            $table->addColumn('email', 'string', [
-                'notnull' => true,
-                'length' => 100
-            ]);
-            $table->addColumn('name', 'string', [
-                'notnull' => true,
-                'length' => 100,
-            ]);
-            $table->addColumn('phone', 'string', [
-                'notnull' => true,
-                'length' => 100,
-            ]);
-            $table->addColumn('identity', 'string', [
-                'notnull' => true,
-                'length' => 100,
-            ]);
-            $table->addColumn('message', 'text', [
-                'notnull' => true
-            ]);
-            $table->addColumn('created', 'datetime', [
-                'notnull' => true,
-                'default' => 'CURRENT_TIMESTAMP'
-            ]);
+		if (!$schema->hasTable('form_responses')) {
+			$table = $schema->createTable('form_responses');
+			$table->addColumn('id', 'integer', [
+				'autoincrement' => true,
+				'notnull' => true,
+			]);
+			$table->addColumn('email', 'string', [
+				'notnull' => true,
+				'length' => 100
+			]);
+			$table->addColumn('name', 'string', [
+				'notnull' => true,
+				'length' => 100,
+			]);
+			$table->addColumn('phone', 'string', [
+				'notnull' => true,
+				'length' => 100,
+			]);
+			$table->addColumn('identity', 'string', [
+				'notnull' => true,
+				'length' => 100,
+			]);
+			$table->addColumn('message', 'text', [
+				'notnull' => true
+			]);
+			$table->addColumn('created', 'datetime', [
+				'notnull' => true,
+				'default' => 'CURRENT_TIMESTAMP'
+			]);
 
-            $table->setPrimaryKey(['id']);
+			$table->setPrimaryKey(['id']);
 		}
 		return $schema;
 	}

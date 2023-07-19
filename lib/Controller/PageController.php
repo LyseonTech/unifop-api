@@ -1,63 +1,59 @@
 <?php
+
 namespace OCA\FormMail\Controller;
 
 use OCA\FormMail\Db\FormResponse;
 use OCA\FormMail\Db\FormResponseMapper;
-use OCP\IRequest;
-use OCP\AppFramework\Http\TemplateResponse;
 use OCP\AppFramework\Controller;
+use OCP\AppFramework\Http\Attribute\AnonRateLimit;
+use OCP\AppFramework\Http\Attribute\NoAdminRequired;
+use OCP\AppFramework\Http\Attribute\NoCSRFRequired;
+use OCP\AppFramework\Http\Attribute\PublicPage;
 use OCP\AppFramework\Http\DataDownloadResponse;
 use OCP\AppFramework\Http\JSONResponse;
+use OCP\AppFramework\Http\TemplateResponse;
+use OCP\IRequest;
 
 class PageController extends Controller {
-	/**
-	 * @var FormResponseMapper
-	 */
-	private $mapper;
-
-	public function __construct($AppName, IRequest $request, FormResponseMapper $mapper){
+	public function __construct(
+		$AppName,
+		IRequest $request,
+		private FormResponseMapper $mapper
+	) {
 		parent::__construct($AppName, $request);
 		$this->mapper = $mapper;
 	}
 
-	/**
-	 * @NoCSRFRequired
-	 */
+	#[NoCSRFRequired]
 	public function index() {
 		return new TemplateResponse('formmail', 'index');  // templates/index.php
 	}
 
 	/**
 	 * Download CSV
-	 *
-	 * @return void
-	 * @NoCSRFRequired
 	 */
-	public function download() {
+	#[NoCSRFRequired]
+	public function download(): DataDownloadResponse {
 		$responses = $this->mapper->findAll();
 		$handle = fopen('php://memory', 'r+');
 
 		fputcsv($handle, array_keys($responses[0]->serialize()));
 		foreach ($responses as $response) {
-            fputcsv($handle, $response->serialize());
-        }
+			fputcsv($handle, $response->serialize());
+		}
 
-        rewind($handle);
-        $output = stream_get_contents($handle);
+		rewind($handle);
+		$output = stream_get_contents($handle);
 		fclose($handle);
 
 		$response = new DataDownloadResponse($output, date('Ymd_His') . '.csv', 'text/csv');
 		return $response;
 	}
 
-	/**
-	 * Save data
-	 *
-	 * @NoAdminRequired
-	 * @NoCSRFRequired
-	 * @PublicPage
-	 * @AnonRateThrottle(limit=10, period=100)
-	 */
+	#[NoAdminRequired]
+	#[NoCSRFRequired]
+	#[PublicPage]
+	#[AnonRateLimit(limit:1, period:100)]
 	public function save() {
 		$response = new JSONResponse();
 		$response->addHeader('Access-Control-Allow-Origin', '*');
@@ -95,5 +91,4 @@ class PageController extends Controller {
 		$response->setData(['success' => ['success' => 'Success']]);
 		return $response;
 	}
-
 }

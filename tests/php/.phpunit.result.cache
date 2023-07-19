@@ -1,0 +1,1 @@
+{"version":1,"defects":{"OCA\\FormMail\\Tests\\Integration\\Controller\\AppTest::testAppInstalled":3},"times":{"OCA\\FormMail\\Tests\\Integration\\Controller\\AppTest::testAppInstalled":0.002,"OCA\\FormMail\\Tests\\Unit\\Controller\\PageControllerTest::testIndex":0.056,"OCA\\FormMail\\Tests\\Unit\\Controller\\PageControllerTest::testSaveWithInvalidParams":0}}

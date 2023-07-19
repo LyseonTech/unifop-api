@@ -8,9 +8,9 @@
  * it's instantiated in there
  */
 return [
-    'routes' => [
-	   ['name' => 'page#index', 'url' => '/', 'verb' => 'GET'],
-	   ['name' => 'page#download', 'url' => '/download', 'verb' => 'GET'],
-	   ['name' => 'page#save', 'url' => '/save', 'verb' => 'POST'],
-    ]
+	'routes' => [
+		['name' => 'page#index', 'url' => '/', 'verb' => 'GET'],
+		['name' => 'page#download', 'url' => '/download', 'verb' => 'GET'],
+		['name' => 'page#save', 'url' => '/save', 'verb' => 'POST'],
+	]
 ];
